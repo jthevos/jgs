@@ -172,8 +172,25 @@ if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
     DATABASES['default'] = dj_database_url.parse(
-        os.environ.get('POSTGRES_URL'), conn_max_age=600
+        'postgres://jg_studios_user:N2IfScPvel6vGEQWPH3Fe8gALD0LSl7c@dpg-ca8h2esobjd11m0co2e0-a/jg_studios', conn_max_age=600
     )
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('POSTGRES_URL'),
+            conn_max_age=600
+        )
+    }
+    
+    # DATABASES.update({
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': os.environ.get('POSTGRES_DB_NAME'),
+    #         'USER': os.environ.get('POSTGRES_USER'),
+    #         'PASSWORD': os.environ.get('POSTGRES_PW'),
+    #         'HOST': os.environ.get('POSTGRES_HOST'),
+    #         'PORT': '5432',
+    #     }
+    # })
 
 LOGIN_REDIRECT_URL = '/art'
 
