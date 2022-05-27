@@ -172,7 +172,7 @@ if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-    DATABASES += {
+    DATABASES.update({
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get('POSTGRES_DB_NAME'),
@@ -181,7 +181,7 @@ if not DEBUG:
             'HOST': os.environ.get('POSTGRES_HOST'),
             'PORT': '5432',
         }
-    }
+    })
 
 LOGIN_REDIRECT_URL = '/art'
 
