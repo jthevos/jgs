@@ -1,0 +1,108 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<p>
+    <a class="btn btn-light" href="{% url 'firegrass_Art_list' %}">
+    Art Listing
+    </a>
+</p>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+  <input type="submit" value="Save" class="btn btn-primary">
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="title">title: </label>
+  <input class="form-control col-sm-10" id="title" type="text" name="title" value="{{ object.title }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="artist">artist: </label>
+  <input class="form-control col-sm-10" id="artist" type="text" name="artist" value="{{ object.artist }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="log_number">log_number: </label>
+  <input class="form-control col-sm-10" id="log_number" type="text" name="log_number" value="{{ object.log_number }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="image">image: </label>
+  <input class="form-control col-sm-10" id="image" type="file" name="image" accept="image/png, image/jpeg, image/gif" value="{{ object.image }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="value">value: </label>
+  <input class="form-control col-sm-10" id="value" type="text" name="value" value="{{ object.value }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="price">price: </label>
+  <input class="form-control col-sm-10" id="price" type="text" name="price" value="{{ object.price }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="paid">paid: </label>
+  <input class="form-control col-sm-10" id="paid" type="text" name="paid" value="{{ object.paid }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="country">country: </label>
+  <input class="form-control col-sm-10" id="country" type="text" name="country" value="{{ object.country }}">
+  </div>
+  <hr>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="year">year: </label>
+  <input class="form-control col-sm-10" id="year" type="number" name="year" value="{{ object.year }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="notes">notes: </label>
+  <input class="form-control col-sm-10" id="notes" type="text" name="notes" value="{{ object.notes }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="medium">medium: </label>
+  <input class="form-control col-sm-10" id="medium" type="text" name="medium" value="{{ object.medium }}">
+  </div>
+  <!-- <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="slug">slug: </label>
+  <input class="form-control col-sm-10" id="slug" type="text" name="slug" value="{{ object.slug }}">
+  </div> -->
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="style">style: </label>
+  <input class="form-control col-sm-10" id="style" type="text" name="style" value="{{ object.style }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="size">size: </label>
+  <input class="form-control col-sm-10" id="size" type="text" name="size" value="{{ object.size }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="art_location">art_location: </label>
+  <input class="form-control col-sm-10" id="art_location" type="text" name="art_location" value="{{ object.art_location }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="available">available: </label>
+  <input class="form-control col-sm-10" id="available" type="text" name="available" value="{{ object.available }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="show">show: </label>
+  <input class="form-control col-sm-10" id="show" type="text" name="show" value="{{ object.show }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="certificate">certificate: </label>
+  <input class="form-control col-sm-10" id="certificate" type="text" name="certificate" value="{{ object.certificate }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="condition">condition: </label>
+  <input class="form-control col-sm-10" id="condition" type="text" name="condition" value="{{ object.condition }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="signature">signature: </label>
+  <input class="form-control col-sm-10" id="signature" type="text" name="signature" value="{{ object.signature }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="gift">gift: </label>
+  <input class="form-control col-sm-10" id="gift" type="text" name="gift" value="{{ object.gift }}">
+  </div>
+  <div class="form-group row">
+  <label class="col-sm-2 col-form-label" for="paper">paper: </label>
+  <input class="form-control col-sm-10" id="paper" type="text" name="paper" value="{{ object.paper }}">
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}

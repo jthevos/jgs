@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+from .base import *
 
 import os
 
@@ -131,57 +132,6 @@ STATIC_URL = '/static/'
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
-    SECURE_SSL_REDIRECT = True
-
-    SESSION_COOKIE_SECURE = True
-
-    SESSION_COOKIE_STORE = True
-
-    CSRF_COOKIE_SECURE = True
-
-    X_FRAME_OPTIONS = 'DENY'
-
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-
-    SECURE_BROWSER_XSS_FILTER = True
-
-    AWS_S3_REGION_NAME = 'nyc3'
-    AWS_S3_ENDPOINT_URL = 'https://jonathangreenstudios.nyc3.digitaloceanspaces.com'
-
-    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'images'
-
-
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-        'ACL': 'public-read',
-    }
-
-    AWS_LOCATION = 'static'
-
-    MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
-
-    STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-
-
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-
-    DATABASES += {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('POSTGRES_DB_NAME'),
-            'USER': config('POSTGRES_USER'),
-            'PASSWORD': config('POSTGRES_PW'),
-            'HOST': config('POSTGRES_HOST'),
-            'PORT': '5432',
-        }
-    }
 
 LOGIN_REDIRECT_URL = '/art'
 

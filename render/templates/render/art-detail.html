@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<p>
+    <a class="btn btn-light" href="{% url 'firegrass_Art_list' %}">
+    Art Listing
+    </a>
+    <a class="btn btn-primary" href="{{object.get_update_url}}">Edit</a>
+</p>
+<style>
+    #information {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+
+    #image {
+        float: right;
+        width: 50%;
+        padding: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .img-container {
+        width: 80%;
+        height: 50%;
+    }
+
+    table {
+    }
+
+    @media print {
+        header, nav, footer, h2, p {
+            display: none;
+        }
+        img {
+            max-width: 400px;
+        }
+        @page {
+            margin: 0.5cm;
+        }
+    }
+
+</style>
+<script type="text/javascript">
+(function() {
+
+var img = document.getElementById('image').firstChild;
+img.onload = function() {
+    if(img.height > img.width) {
+        img.height = '100%';
+        img.width = 'auto';
+    }
+};
+
+}());
+</script>
+<div id="information">
+<table class="table">
+        <tr><td>title</td><td>{{ object.title }}</td></tr>
+        <tr><td>artist</td><td>{{ object.artist }}</td></tr>
+        <tr><td>log_number</td><td>{{ object.log_number }}</td></tr>
+        <tr><td>price</td><td>{{ object.price }}</td></tr>
+        <tr><td>year</td><td>{{ object.year }}</td></tr>
+        <tr><td>value</td><td>{{ object.value }}</td></tr>
+        <tr><td>paid</td><td>{{ object.paid }}</td></tr>
+        <tr><td>notes</td><td>{{ object.notes }}</td></tr>
+        <tr><td>description</td><td>{{ object.description }}</td></tr>
+        <tr><td>medium</td><td>{{ object.medium }}</td></tr>
+        <tr><td>style</td><td>{{ object.style }}</td></tr>
+        <tr><td>size</td><td>{{ object.size }}</td></tr>
+        <tr><td>location</td><td>{{ object.location }}</td></tr>
+        <tr><td>available</td><td>{{ object.available }}</td></tr>
+        <tr><td>country</td><td>{{ object.country }}</td></tr>
+        <tr><td>show</td><td>{{ object.show }}</td></tr>
+        <tr><td>certificate</td><td>{{ object.certificate }}</td></tr>
+        <tr><td>condition</td><td>{{ object.condition }}</td></tr>
+        <tr><td>signature</td><td>{{ object.signature }}</td></tr>
+        <tr><td>gift</td><td>{{ object.gift }}</td></tr>
+        <tr><td>paper</td><td>{{ object.paper }}</td></tr>
+        <tr><td>year_span</td><td>{{ object.year_span }}</td></tr>
+
+</table>
+    </div>
+    <div id="image">
+        <img src="{{object.image}}">
+    </div>
+
+{% endblock %}

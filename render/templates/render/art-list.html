@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% load humanize %}
+
+<style>
+    img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    form {
+        display: inline;
+    }
+
+    .bigbox {
+        width: 400px;
+        height: 40px;
+    }
+
+    ._inline {
+        display: inline;
+        text-align: right;
+        float: right;
+    }
+
+</style>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type='text'  class='bigbox' name='art_identifier' value='{{search_term}}'>
+        <input type="submit" class="btn btn-primary" value="Search">
+    </form>
+    <form method="get">
+        <input type="submit" class="btn btn-primary" value="Clear Search">
+    </form>
+    <a class="btn btn-dark" href="{% url 'firegrass_Art_create' %}">New Entry</a>
+    {% if active_search %}
+    <h4 class='_inline'>Total Value: ${{total_value|intcomma}}</h4>
+    {% else %}
+    {% endif %}
+</div>
+{% if active_search %}
+<table class='table'>
+<thead>
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Artist</th>
+    <th scope="col">Medium</th>
+    <th scope="col">Value</th>
+    <th scope="col">Size</th>
+    <th scope="col">Image</th>
+  </tr>
+</thead>
+<tbody>
+{% for object in object_list %}
+    <tr>
+    <div>
+    <div class="m-2">
+        <td><a href="{{object.get_absolute_url}}">{{object.title}}</a></td>
+        <td>{{object.artist}}</td>
+        <td>{{object.medium}}</td>
+        <td>${{object.value}}</td>
+        <td>{{object.size}}</td>
+        <td><img src='{{object.image}}'></td>
+
+    </div>
+    <tr>
+    </div>
+{% endfor %}
+</tbody>
+
+</table>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
