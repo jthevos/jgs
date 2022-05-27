@@ -1,7 +1,7 @@
 databases:
-  - name: jg_studios
-    databaseName: jg_studios
-    user: jg_studios_user
+  - name: mysite
+    databaseName: mysite_igsh
+    user: mysite
 
 services:
   - type: web
@@ -12,8 +12,8 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: jg_studios
-          property: connectionString
+          name: mysite_igsh
+          property: postgres://mysite:6R4SltwS4wDFwUon9uNlWPSrJ1qYtfkT@dpg-ca8jp5r0tnutcided9mg-a/mysite_igsh
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
