@@ -1,7 +1,7 @@
 databases:
   - name: mysite
     databaseName: POSTGRES_DB_NAME
-    user: jg_POSTGRES_USERstu
+    user: POSTGRES_USER
 
 
 services:
