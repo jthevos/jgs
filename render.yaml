@@ -1,5 +1,5 @@
 databases:
-  - name: mysite
+  - name: jg_studios
     databaseName: jg_studios
     user: jg_studios_user
 
