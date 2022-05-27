@@ -178,7 +178,7 @@ if not DEBUG:
             'NAME': os.environ.get('POSTGRES_DB_NAME'),
             'USER': os.environ.get('POSTGRES_USER'),
             'PASSWORD': os.environ.get('POSTGRES_PW'),
-            'HOST': os.environ.get('POSTGRES_HOST'),
+            'HOST': os.environ.get('DATABASE_URL'),
             'PORT': '5432',
         }
     })
