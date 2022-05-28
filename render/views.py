@@ -1,8 +1,8 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 
 def index(request):
-    return render(request, 'render/index.html', {})
+    response = redirect('/art/')
+    return response
 
 
 from django.views import generic, View
