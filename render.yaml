@@ -8,7 +8,7 @@ services:
     name: jg-studios
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    startCommand: "gunicorn jgs.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
