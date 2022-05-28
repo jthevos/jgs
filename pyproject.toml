@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "mysite"
+name = "jgs"
 version = "0.1.0"
 description = ""
 authors = ["John-Anthony Thevos <john.thevos@gmail.com>"]

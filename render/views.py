@@ -1,10 +1,4 @@
 from django.shortcuts import render, redirect
-
-def index(request):
-    response = redirect('/art/')
-    return response
-
-
 from django.views import generic, View
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -17,6 +11,11 @@ from django.db.models import Count, F, Value, Sum, Q
 from django.contrib.postgres.search import SearchVector
 
 from django.db.models.fields import *
+
+def index(request):
+    response = redirect('/art/')
+    return response
+
 
 
 search_fields = [
