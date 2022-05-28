@@ -1,0 +1,20 @@
+databases:
+  - name: mysite
+    databaseName: mysite_igsh
+    user: mysite
+
+services:
+  - type: web
+    name: jg-studios
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn jgs.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite_igsh
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
