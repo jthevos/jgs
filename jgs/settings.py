@@ -90,7 +90,6 @@ DATABASES = {
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -130,6 +129,7 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
     SECURE_SSL_REDIRECT = True
@@ -147,12 +147,14 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
 
     AWS_S3_REGION_NAME = 'nyc3'
+
     AWS_S3_ENDPOINT_URL = 'https://jonathangreenstudios.nyc3.digitaloceanspaces.com'
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'images'
 
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+    AWS_STORAGE_BUCKET_NAME = 'images'
 
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
@@ -165,32 +167,16 @@ if not DEBUG:
 
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 
-
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-    DATABASES['default'] = dj_database_url.parse(
-        'postgres://jg_studios_user:N2IfScPvel6vGEQWPH3Fe8gALD0LSl7c@dpg-ca8h2esobjd11m0co2e0-a/jg_studios', conn_max_age=600
-    )
     DATABASES = {
         'default': dj_database_url.config(
             default=os.environ.get('POSTGRES_URL'),
             conn_max_age=600
         )
     }
-    
-    # DATABASES.update({
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': os.environ.get('POSTGRES_DB_NAME'),
-    #         'USER': os.environ.get('POSTGRES_USER'),
-    #         'PASSWORD': os.environ.get('POSTGRES_PW'),
-    #         'HOST': os.environ.get('POSTGRES_HOST'),
-    #         'PORT': '5432',
-    #     }
-    # })
 
 LOGIN_REDIRECT_URL = '/art'
 
