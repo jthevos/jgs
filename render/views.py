@@ -16,8 +16,6 @@ def index(request):
     response = redirect('/art/')
     return response
 
-
-
 search_fields = [
     "title",
     "artist",

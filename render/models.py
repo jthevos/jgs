@@ -55,10 +55,10 @@ class Art(models.Model):
             return self.title + " - " + self.log_number
 
     def get_absolute_url(self):
-        return reverse("firegrass_Art_detail", args=(self.slug,))
+        return reverse("render_Art_detail", args=(self.slug,))
 
     def get_update_url(self):
-        return reverse("firegrass_Art_update", args=(self.slug,))
+        return reverse("render_Art_update", args=(self.slug,))
 
     def get_image_url(self):
         return self.image.url
