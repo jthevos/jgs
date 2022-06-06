@@ -34,7 +34,7 @@
     <form method="get">
         <input type="submit" class="btn btn-primary" value="Clear Search">
     </form>
-    <a class="btn btn-dark" href="{% url 'firegrass_Art_create' %}">New Entry</a>
+    <a class="btn btn-dark" href="{% url 'render_Art_create' %}">New Entry</a>
     {% if active_search %}
     <h4 class='_inline'>Total Value: ${{total_value|intcomma}}</h4>
     {% else %}

@@ -117,6 +117,7 @@ class ArtCreateView(LoginRequiredMixin, generic.CreateView):
     raise_exception = False
 
 class ArtDetailView(LoginRequiredMixin, generic.DetailView):
+    template_name_field = 'render/art-detail.html'
     model = models.Art
     form_class = forms.ArtForm
     raise_exception = False
