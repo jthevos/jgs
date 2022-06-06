@@ -17,10 +17,10 @@ class Art(models.Model):
     )
     log_number = models.CharField(max_length=10, null=True, blank=True)
     medium = models.CharField(max_length=255, null=True, blank=True)
-    slug = extension_fields.AutoSlugField(populate_from="title", blank=True)
+    slug = extension_fields.AutoSlugField(max_length=255, populate_from="title", blank=True)
     description = models.TextField(max_length=5000, null=True, blank=True)
     image = models.ImageField(
-        max_length=255, storage=fs, upload_to="images/", null=True
+        max_length=512, storage=fs, upload_to="images/", null=True
     )
     style = models.CharField(max_length=255, null=True, blank=True)
     size = models.CharField(max_length=255, null=True, blank=True)
@@ -33,7 +33,7 @@ class Art(models.Model):
     show = models.CharField(max_length=255, null=True, blank=True)
     artist = models.CharField(max_length=255, default="Jonathan Green", null=True)
     certificate = models.BooleanField(null=True)
-    condition = models.CharField(max_length=255, null=True, blank=True)
+    condition = models.CharField(max_length=5000, null=True, blank=True)
     location = models.CharField(max_length=255, null=True, blank=True)
     notes = models.TextField(max_length=5000, blank=True)
     value = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, null=True)
