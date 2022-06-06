@@ -66,7 +66,7 @@ class ArtListView(LoginRequiredMixin, View):
         active_search = False
         search_term = ''
         return render(request,
-                    'render/art-list.html',
+                    'render/art_list.html',
                     {
                         'object_list': art_list,
                         'form_class': self.form_class,
@@ -100,7 +100,7 @@ class ArtListView(LoginRequiredMixin, View):
             art_list = {}
 
         return render(request,
-                    'render/art-list.html',
+                    'render/art_list.html',
                     {
                         'object_list': art_list,
                         'form_class': self.form_class,
@@ -117,7 +117,7 @@ class ArtCreateView(LoginRequiredMixin, generic.CreateView):
     raise_exception = False
 
 class ArtDetailView(LoginRequiredMixin, generic.DetailView):
-    template_name_field = 'render/art-detail.html'
+    template_name_field = 'render/art_detail.html'
     model = models.Art
     form_class = forms.ArtForm
     raise_exception = False
